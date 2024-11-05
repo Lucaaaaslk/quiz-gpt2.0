@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title> Quiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Chatbot Quiz</h1>
+    <form method="POST">
+        <input type="text" name="user_input" placeholder="Digite sua resposta" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div>
+        <h2>Conversa:</h2>
+        <ul>
+            {% for msg in response_gpt %}
+                <li><strong>{{ msg.role }}:</strong> {{ msg.content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% if final_message %}
+        <p>{{ final_message }}</p>
+    {% endif %}
+    <script src="/static/main.js"></script>
+</body>
+</html>
